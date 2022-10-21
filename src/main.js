@@ -76,3 +76,16 @@ const cardNumberPattern = {
   },
 }
 const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
+
+// o botao esta sendo escutado e quando ele receber um click, irá lançar um alert no navegador
+const addButton = document.querySelector("#add-card")
+addButton.addEventListener("click", () => {
+  alert("Cartão adicionado!")
+})
+
+// o formulario esta sendo escutado e quando for realizado um submit ele vai realizar uma ação
+document.querySelector("form").addEventListener("submit", (event) => {
+  //essa ação faz com que ao submit ocorrer, ele nao faça o comportamento padrao 
+  event.preventDefault()
+})
+
