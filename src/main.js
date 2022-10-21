@@ -85,7 +85,7 @@ addButton.addEventListener("click", () => {
 
 // o formulario esta sendo escutado e quando for realizado um submit ele vai realizar uma ação
 document.querySelector("form").addEventListener("submit", (event) => {
-  //essa ação faz com que ao submit ocorrer, ele nao faça o comportamento padrao 
+  //essa ação faz com que ao submit ocorrer, ele nao faça o comportamento padrao
   event.preventDefault()
 })
 
@@ -94,5 +94,40 @@ const cardHolder = document.querySelector("#card-holder")
 cardHolder.addEventListener("input", () => {
   const ccHolder = document.querySelector(".cc-holder .value")
 
-  ccHolder.innerText = cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value
+  ccHolder.innerText =
+    cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value
 })
+
+// preenchendo o codigo de segurança do cartao dinamicamente, conforme o input recebe o valor
+securityCodeMasked.on("accept", () => {
+  updateSecurityCode(securityCodeMasked.value)
+})
+
+function updateSecurityCode(code) {
+  const ccSecurity = document.querySelector(".cc-securoty .value")
+
+  ccSecurity.innerText = code.length === 0 ? "123" : code
+}
+
+// preenchendo o numero do cartao dinamicamente, conforme o input recebe o valor
+cardNumberMasked.on("accept", () => {
+  const cardType = cardNumberMasked.masked.currentMask.cardtype
+  setCardType(cardType)
+  updateCardNumber(cardNumberMasked.value)
+})
+
+function updateCardNumber(number) {
+  const ccNumber = document.querySelector(".cc-number")
+
+  ccNumber.innerText = number.length === 0 ? "1234 5678 9012 3456" : number
+}
+
+// preenchendo o data de expiração do cartao dinamicamente, conforme o input recebe o valor
+expirationDateMasked.on("accept", () => {
+  updateExpirationDate(expirationDateMasked.value)
+})
+
+function updateExpirationDate(date) {
+  const ccExpiration = document.querySelector(".cc-extra .value")
+  ccExpiration.innerText = date.length === 0 ? "02/32" : date
+}
