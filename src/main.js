@@ -89,3 +89,10 @@ document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault()
 })
 
+// preenchendo o nome do cartao dinamicamente, conforme o input recebe o valor
+const cardHolder = document.querySelector("#card-holder")
+cardHolder.addEventListener("input", () => {
+  const ccHolder = document.querySelector(".cc-holder .value")
+
+  ccHolder.innerText = cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value
+})
